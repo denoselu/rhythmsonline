@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os 
 from pathlib import Path
 import django_heroku
+import dja_database_url
+from decouple import config
 
 
 
@@ -76,9 +78,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
-ROOT_URLCONF = 'project.urls'
+ROOT_URLCONF = 'rhythmsonline.urls'
 
 TEMPLATES = [
     {
@@ -162,6 +165,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS=[
 os.path.join(BASE_DIR,'static')
 ]
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
 
 
@@ -176,7 +180,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'denoselu@gmail.com'
-EMAIL_HOST_PASSWORD = '0711308002'
+EMAIL_HOST_PASSWORD = 'selu.30452518'
 ACCOUNT_EMAIL_VERIFICATION='none'
 
 
